@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 
 //@Disabled
-@Autonomous(name = "Blue Regionals Carousel Auton", group = "BLUE C")
+@Autonomous(name = "BLUE CAROUSEL - REGIONALS", group = "BLUE C")
 public class BlueRegionalsCarouselAuton extends MatchOpMode {
     public static double startPoseX = 0;
     public static double startPoseY = 0;

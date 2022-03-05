@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 
 //@Disabled
-@Autonomous(name = "Blue Regionals Warehouse Auton", group = "BLUE W")
+@Autonomous(name = "BLUE WAREHOUSE - REGIONALS", group = "BLUE W")
 public class BlueRegionalsWarehouseAuton extends MatchOpMode {
     public static double startPoseX = 0;
     public static double startPoseY = 0;

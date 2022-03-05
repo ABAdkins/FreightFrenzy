@@ -10,6 +10,7 @@ import org.firstinspires.ftc.teamcode.commands.drive.auton.DriveForwardCommand;
 import org.firstinspires.ftc.teamcode.commands.drive.auton.SplineCommand;
 import org.firstinspires.ftc.teamcode.commands.drive.auton.TurnToCommand;
 import org.firstinspires.ftc.teamcode.commands.drive.auton.TwoSplineCommand;
+import org.firstinspires.ftc.teamcode.subsystems.Cap;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.DuckWheels;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;

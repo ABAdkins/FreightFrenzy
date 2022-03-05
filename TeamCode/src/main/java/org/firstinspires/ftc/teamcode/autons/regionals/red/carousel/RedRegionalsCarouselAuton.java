@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 
 //@Disabled
-@Autonomous(name = "Red Regionals Carousel Auton", group = "RED C")
+@Autonomous(name = "RED CAROUSEL - REGIONALS", group = "RED C")
 public class RedRegionalsCarouselAuton extends MatchOpMode {
     public static double startPoseX = 0;
     public static double startPoseY = 0;
@@ -82,7 +82,7 @@ public class RedRegionalsCarouselAuton extends MatchOpMode {
                             new RedRegionalsCarouselCCommand(drivetrain, lift, intake, duckWheels, cap, telemetry)
                     ));
                     put(TeamMarkerPipeline.Position.RIGHT, new SequentialCommandGroup(
-                            new RedRegionalsCarouselRCommand(drivetrain, lift, duckWheels, telemetry)
+                            new RedRegionalsCarouselRCommand(drivetrain, lift, intake, duckWheels, cap, telemetry)
                     ));
                 }}, vision::getCurrentPosition)
 
