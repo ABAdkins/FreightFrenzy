@@ -23,9 +23,10 @@ public class CarouselBlueRegionalsCommandSequence extends SequentialCommandGroup
         addCommands(
                 //finished 1/27
                 //duck
+                //a-ok
                 new InstantCommand(lift::closeDel),
                 new KindaSlowDriveForwardCommand(drivetrain, -23),
-                new TurnToCommand(drivetrain, 235, true),
+                new TurnToCommand(drivetrain, 235, false),
                 new DriveForwardCommand(drivetrain, 21),
                 new SlowDriveForwardCommand(drivetrain, 12),
                 new InstantCommand(duckWheels::spinBlueAuton),

@@ -9,6 +9,7 @@ import com.arcrobotics.ftclib.hardware.motors.MotorEx;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
+import org.firstinspires.ftc.teamcode.Util;
 import org.firstinspires.ftc.teamcode.autons.champs.blue.warehouse.LSimpleWarehouseBlueCommand;
 import org.firstinspires.ftc.teamcode.autons.regionals.blue.carousel.BlueRegionalsCarouselCCommand;
 import org.firstinspires.ftc.teamcode.autons.regionals.blue.carousel.BlueRegionalsCarouselLCommand;
@@ -25,6 +26,7 @@ import org.firstinspires.ftc.teamcode.subsystems.Vision;
 import org.firstinspires.ftc.teamcode.subsystems.constants.VisionConstants;
 
 import java.util.HashMap;
+import java.util.logging.Level;
 
 //@Disabled
 @Autonomous(name = "RED WAREHOUSE - REGIONALS", group = "RED W")
@@ -67,7 +69,8 @@ public class RedRegionalsWarehouseAuton extends MatchOpMode {
 
     @Override
     public void disabledPeriodic() {
-
+        Util.logger(this, telemetry, Level.INFO, "Current Position", vision.getCurrentPosition());
+        vision.periodic();
     }
 
     @Override

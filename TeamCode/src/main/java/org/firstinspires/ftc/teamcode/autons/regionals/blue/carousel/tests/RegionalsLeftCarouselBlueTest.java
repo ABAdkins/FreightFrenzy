@@ -60,7 +60,7 @@ public class RegionalsLeftCarouselBlueTest extends MatchOpMode {
 
     @Override
     public void matchStart() {
-        schedule(new BlueRegionalsCarouselLCommand(drivetrain, lift, intake, duckWheels, cap, telemetry));
+        schedule(new BlueRegionalsCarouselLCommand(drivetrain, lift, duckWheels, cap, telemetry));
 
     }
 }

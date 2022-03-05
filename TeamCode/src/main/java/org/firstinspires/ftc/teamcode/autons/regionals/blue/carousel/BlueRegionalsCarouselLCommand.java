@@ -38,7 +38,7 @@ public class BlueRegionalsCarouselLCommand extends SequentialCommandGroup {
 
                 new SlowDriveForwardCommand(drivetrain, -5.5),//perfect distance
                 new WaitCommand(200),
-
+                //deliver preload
                 new InstantCommand(lift::openDel),
                 new WaitCommand(700),
                 new SlowDriveForwardCommand(drivetrain, 8),
@@ -47,7 +47,7 @@ public class BlueRegionalsCarouselLCommand extends SequentialCommandGroup {
 
                 //park
                 new TurnToCommand(drivetrain, 90, true),
-                new SplineCommand(drivetrain,new Vector2d( 31, -24), 270, true)
+                new SplineCommand(drivetrain,new Vector2d( 30, -24), 270, true)
 
         );
     }

@@ -30,9 +30,11 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
+import com.qualcomm.robotcore.hardware.configuration.LynxConstants;
 import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.CurrentUnit;
 import org.firstinspires.ftc.teamcode.rrExt.ImprovedRamsete;
 import org.firstinspires.ftc.teamcode.rrExt.ImprovedTankDrive;
 import org.firstinspires.ftc.teamcode.util.AxesSigns;
@@ -92,6 +94,12 @@ public class SampleTankDrive extends ImprovedTankDrive {
 
     private VoltageSensor batteryVoltageSensor;
 
+    //------------------------------------------------------------------------------------------
+    public LynxModule ControlHub;
+    public LynxModule ExpansionHub;
+    //------------------------------------------------------------------------------------------
+
+
     public SampleTankDrive(HardwareMap hardwareMap) {
         super(kV, kA, kStatic, TRACK_WIDTH, hardwareMap.voltageSensor.iterator().next());
 
@@ -122,6 +130,17 @@ public class SampleTankDrive extends ImprovedTankDrive {
         for (LynxModule module : hardwareMap.getAll(LynxModule.class)) {
             module.setBulkCachingMode(LynxModule.BulkCachingMode.AUTO);
         }
+        //------------------------------------------------------------------------------------------
+        //-----------------------------------voltage thingy-----------------------------------------
+        /*
+            for(LynxModule lynx : modules){
+                if (lynx.isParent()& LynxConstants.isEmbeddedSerialNumber(lynx.getSerialNumber())){
+                    ControlHub = lynx;
+                }
+            }
+            ControlHub.getCurrent(CurrentUnit.AMPS);
+         */
+        //------------------------------------------------------------------------------------------
 
         // TODO: adjust the names of the following hardware devices to match your configuration
         imu = hardwareMap.get(BNO055IMU.class, "imu");
