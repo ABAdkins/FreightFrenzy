@@ -5,6 +5,7 @@ import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.hardware.ServoEx;
 import com.arcrobotics.ftclib.hardware.motors.MotorEx;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.Util;
 import org.firstinspires.ftc.teamcode.drive.MatchOpMode;
@@ -18,7 +19,7 @@ import org.firstinspires.ftc.teamcode.subsystems.constants.VisionConstants;
 
 import java.util.logging.Level;
 
-//@Disabled
+@Disabled
 @Autonomous(name = "Red Right Regionals Carousel Test", group = "RED C")
 public class RedRightRegionalsCarouselTest extends MatchOpMode {
     public static double startPoseX = 0;

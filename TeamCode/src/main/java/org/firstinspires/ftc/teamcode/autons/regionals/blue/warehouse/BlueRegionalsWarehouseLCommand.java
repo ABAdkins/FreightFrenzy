@@ -23,16 +23,16 @@ public class BlueRegionalsWarehouseLCommand extends SequentialCommandGroup {
 
                 new InstantCommand(lift::closeDel),
                 //go to hub
-                new SplineCommand(drivetrain, new Vector2d( 27, -20.5),220, true),
+                new SplineCommand(drivetrain, new Vector2d( 26, -20.3),220, true),
                 new WaitCommand(50),
                 new TurnToCommand(drivetrain, 180, false),
-                new DriveForwardCommand(drivetrain, -4),
+                new DriveForwardCommand(drivetrain, -4.5),
 
 
                 //deliver and spline away
                 new InstantCommand(lift::liftLowAuton),
                 new InstantCommand(lift::openDel),
-                new WaitCommand(600),
+                new WaitCommand(400),
                 new InstantCommand(lift::closeDel),
                 new InstantCommand(intake::intake),
                 new TwoSplineCommand(drivetrain, new Vector2d(-2,10), new Vector2d(-3, 40.0), 265.8, 264.5),
@@ -46,25 +46,27 @@ public class BlueRegionalsWarehouseLCommand extends SequentialCommandGroup {
 
 
                 //turn to correct
-                new TurnToCommand(drivetrain, 85, false),
+                new TurnToCommand(drivetrain, 80, false),
                 new InstantCommand(intake::stop),
                 new TwoSplineCommand(drivetrain, new Vector2d(-4,10), new Vector2d(22,-20.5), 180,220, true),
                 new TurnToCommand(drivetrain, 170, false),
-                new DriveForwardCommand(drivetrain, -4),
+                new DriveForwardCommand(drivetrain, -2),
                 new InstantCommand(lift::liftHigh),
                 new WaitCommand(400),
                 new InstantCommand(lift::openDel),
                 new DriveForwardCommand(drivetrain, 4),
-                new InstantCommand(lift::liftLow),
                 new InstantCommand(lift::closeDel),
+                new InstantCommand(lift::liftLow),
+
                 new WaitCommand(150),
                 new InstantCommand(intake::intake),
-                new TwoSplineCommand(drivetrain, new Vector2d(-3.5,10), new Vector2d(-3.5, 43.0), 265.8, 264.5),
+                //into warehouse
+                new TwoSplineCommand(drivetrain, new Vector2d(-4.5,10), new Vector2d(-4.5, 43.0), 265.8, 264.5),
                 //wait a bit and outtake
                 new WaitCommand(200),
                 new InstantCommand(intake::outtake),
-                //stop intake
-                new TwoSplineCommand(drivetrain, new Vector2d(-4,10), new Vector2d(22,-20.5), 180,220, true),
+                //out of warehouse
+                new TwoSplineCommand(drivetrain, new Vector2d(-4.5,10), new Vector2d(22,-20.5), 170 ,220, true),
                 new InstantCommand(intake::stop),
                 new TurnToCommand(drivetrain, 170, false),
                 new DriveForwardCommand(drivetrain, -3),
@@ -77,7 +79,7 @@ public class BlueRegionalsWarehouseLCommand extends SequentialCommandGroup {
                 new InstantCommand(lift::liftLow),
 
                 new WaitCommand(200),
-                new TwoSplineCommand(drivetrain, new Vector2d(-2,5), new Vector2d(-3, 42.0), 265.8, 264.5)
+                new TwoSplineCommand(drivetrain, new Vector2d(-4,5), new Vector2d(-4, 42.0), 265.8, 264.5)
         //wait a bit and outtake
 
         );

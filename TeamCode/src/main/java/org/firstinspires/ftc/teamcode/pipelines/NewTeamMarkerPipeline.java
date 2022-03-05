@@ -25,8 +25,8 @@ public class NewTeamMarkerPipeline extends OpenCvPipeline {
     private double rightAverage;
 
     //The width and height of the rectangles in terms of pixels
-    public int rectangleWidth = 22;
-    public int rectangleHeight = 17;
+    public int rectangleWidth = 40;
+    public int rectangleHeight = 25;
 
     @Override
     public Mat processFrame(Mat input) {

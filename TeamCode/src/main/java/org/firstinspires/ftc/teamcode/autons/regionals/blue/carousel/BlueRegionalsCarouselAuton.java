@@ -78,7 +78,7 @@ public class BlueRegionalsCarouselAuton extends MatchOpMode {
                             //new BlueRegionalsCarouselL(drivetrain, lift, duckWheels, telemetry)
                     ));
                     put(TeamMarkerPipeline.Position.RIGHT, new SequentialCommandGroup(
-                            //new BlueRegionalsCarouselL(drivetrain, lift, duckWheels, telemetry)
+                            //new BlueRegionalsCarouselRCommand(drivetrain, lift, duckWheels, telemetry)
                     ));
                 }}, vision::getCurrentPosition)
 

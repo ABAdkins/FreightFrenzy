@@ -10,10 +10,12 @@ import com.arcrobotics.ftclib.hardware.motors.MotorEx;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
+import org.checkerframework.checker.units.qual.C;
 import org.firstinspires.ftc.teamcode.Util;
 import org.firstinspires.ftc.teamcode.drive.MatchOpMode;
 import org.firstinspires.ftc.teamcode.drive.SampleTankDrive;
 import org.firstinspires.ftc.teamcode.pipelines.TeamMarkerPipeline;
+import org.firstinspires.ftc.teamcode.subsystems.Cap;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.DuckWheels;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
@@ -46,6 +48,7 @@ public class RedRegionalsCarouselAuton extends MatchOpMode {
     private Lift lift;
     private Vision vision;
     private DuckWheels duckWheels;
+    private Cap cap;
 
     @Override
     public void robotInit() {
@@ -53,11 +56,12 @@ public class RedRegionalsCarouselAuton extends MatchOpMode {
         drivetrain = new Drivetrain(new SampleTankDrive(hardwareMap), telemetry);
         drivetrain.init();
 
-        vision = new Vision(hardwareMap, "Webcam 1", telemetry, VisionConstants.BLUE_CAROUSEL_VISION.LEFT_X , VisionConstants.BLUE_CAROUSEL_VISION.LEFT_Y, VisionConstants.BLUE_CAROUSEL_VISION.CENTER_X, VisionConstants.BLUE_CAROUSEL_VISION.CENTER_Y, VisionConstants.BLUE_CAROUSEL_VISION.RIGHT_X, VisionConstants.BLUE_CAROUSEL_VISION.RIGHT_Y);
+        vision = new Vision(hardwareMap, "Webcam 1", telemetry, VisionConstants.RED_CAROUSEL_VISION.LEFT_X , VisionConstants.RED_CAROUSEL_VISION.LEFT_Y, VisionConstants.RED_CAROUSEL_VISION.CENTER_X, VisionConstants.RED_CAROUSEL_VISION.CENTER_Y, VisionConstants.RED_CAROUSEL_VISION.RIGHT_X, VisionConstants.RED_CAROUSEL_VISION.RIGHT_Y);
         drivetrain.setPoseEstimate(new Pose2d(startPoseX, startPoseY, Math.toRadians(startPoseHeading)));
         intake = new Intake(hardwareMap, telemetry);
         lift = new Lift(hardwareMap, telemetry);
         duckWheels = new DuckWheels(hardwareMap, telemetry);
+        cap = new Cap(hardwareMap, telemetry);
     }
 
     @Override
@@ -72,13 +76,13 @@ public class RedRegionalsCarouselAuton extends MatchOpMode {
 
                 new SelectCommand(new HashMap<Object, Command>() {{
                     put(TeamMarkerPipeline.Position.LEFT, new SequentialCommandGroup(
-                            //new RedRegionalsCarouselL(drivetrain, lift, duckWheels, telemetry)
+                            new RedRegionalsCarouselLCommand(drivetrain, lift, intake, duckWheels, cap, telemetry)
                     ));
                     put(TeamMarkerPipeline.Position.MIDDLE, new SequentialCommandGroup(
-                            //new RedRegionalsCarouselL(drivetrain, lift, duckWheels, telemetry)
+                            new RedRegionalsCarouselCCommand(drivetrain, lift, intake, duckWheels, cap, telemetry)
                     ));
                     put(TeamMarkerPipeline.Position.RIGHT, new SequentialCommandGroup(
-                            //new RedRegionalsCarouselL(drivetrain, lift, duckWheels, telemetry)
+                            new RedRegionalsCarouselRCommand(drivetrain, lift, duckWheels, telemetry)
                     ));
                 }}, vision::getCurrentPosition)
 

@@ -53,6 +53,7 @@ public class FFRectDetector {
         camera.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
             @Override
             public void onOpened() {
+                camera.openCameraDevice();
                 camera.startStreaming(CAMERA_WIDTH, CAMERA_HEIGHT, ORIENTATION);
             }
 

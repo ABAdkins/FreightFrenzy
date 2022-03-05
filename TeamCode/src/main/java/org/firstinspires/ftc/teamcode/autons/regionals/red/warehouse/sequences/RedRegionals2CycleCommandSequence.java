@@ -19,12 +19,10 @@ public class RedRegionals2CycleCommandSequence extends SequentialCommandGroup {
                 //begin sequence
 
                 new InstantCommand(intake::intake),
-
-                new TwoSplineCommand(drivetrain, new Vector2d(-3, -3), new Vector2d(-3, -40.0), -265.8, -264.5),
+                new TwoSplineCommand(drivetrain, new Vector2d(-3.5, -10), new Vector2d(-4, -40.0), -265.8, -265.5),
                 new WaitCommand(50),
-                new TurnToCommand(drivetrain, 270, false),
                 new InstantCommand(intake::outtake),
-                new TwoSplineCommand(drivetrain, new Vector2d(-4,10), new Vector2d(16.5,19.5), -150, -220, true),
+                new TwoSplineCommand(drivetrain, new Vector2d(-4,10), new Vector2d(22,21), -150, -220, true),
                 new InstantCommand(intake::stop),
                 new InstantCommand(lift::liftHigh),
                 new TurnToCommand(drivetrain, 180, true),
@@ -34,18 +32,20 @@ public class RedRegionals2CycleCommandSequence extends SequentialCommandGroup {
                 new InstantCommand(lift::liftLow),
                 new InstantCommand(intake::intake),
 
-                new TwoSplineCommand(drivetrain, new Vector2d(-3, -4), new Vector2d(-3, -40.0), -265.8, -264.5),
+                new TwoSplineCommand(drivetrain, new Vector2d(-7, -6), new Vector2d(-5, -40.0), -265.8, -265.8),
                 new WaitCommand(50),
-                new TurnToCommand(drivetrain, 270, false),
                 new InstantCommand(intake::outtake),
-                new TwoSplineCommand(drivetrain, new Vector2d(-4,10), new Vector2d(15,19.5), -150, -220, true),
+                new TwoSplineCommand(drivetrain, new Vector2d(-5,-10), new Vector2d(22,21), -150, -220, true),
                 new InstantCommand(lift::liftHigh),
-                new TurnToCommand(drivetrain, 180, true),
+                new TurnToCommand(drivetrain, 180, false),
                 new InstantCommand(lift::openDel),
                 new DriveForwardCommand(drivetrain, 4),
                 new InstantCommand(lift::closeDel),
                 new InstantCommand(lift::liftLow),
-                new InstantCommand(intake::intake)
+                new InstantCommand(intake::intake),
+                new TwoSplineCommand(drivetrain, new Vector2d(-8, -7), new Vector2d(-5, -40.0), -265.8, -264.5),
+                new WaitCommand(300),
+                new InstantCommand(intake::stop)
         );
     }
 }
