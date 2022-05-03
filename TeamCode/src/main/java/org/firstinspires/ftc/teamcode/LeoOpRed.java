@@ -10,13 +10,11 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.commands.DeliverCommand;
 import org.firstinspires.ftc.teamcode.commands.LowerLiftNoLimitSwitchCommand;
-import org.firstinspires.ftc.teamcode.commands.drive.CapManualCommand;
 import org.firstinspires.ftc.teamcode.commands.drive.teleOp.LeosFastDriveCommand;
 import org.firstinspires.ftc.teamcode.commands.drive.teleOp.ReallyReallySlowDriveCommand;
 import org.firstinspires.ftc.teamcode.commands.drive.teleOp.SlowDriveCommand;
 import org.firstinspires.ftc.teamcode.drive.MatchOpMode;
 import org.firstinspires.ftc.teamcode.drive.SampleTankDrive;
-import org.firstinspires.ftc.teamcode.subsystems.Cap;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.DuckWheels;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
@@ -33,7 +31,6 @@ public class LeoOpRed extends MatchOpMode {
     private Lift lift;
     private Intake intake;
     private DuckWheels duckWheels;
-    private Cap cap;
 
     //Buttons
     private Button intakeButton, outtakeButton;
@@ -51,13 +48,11 @@ public class LeoOpRed extends MatchOpMode {
         intake = new Intake(hardwareMap, telemetry);
         lift = new Lift(hardwareMap, telemetry);
         duckWheels = new DuckWheels(hardwareMap, telemetry);
-        cap = new Cap(hardwareMap, telemetry);
 
         driverGamepad = new GamepadEx(gamepad1);
         operatorGamepad = new GamepadEx(gamepad2);
 
         drivetrain.setDefaultCommand(new SlowDriveCommand(drivetrain, driverGamepad));
-        cap.setDefaultCommand(new CapManualCommand(cap, operatorGamepad));
 
         lift.closeDel();
         lift.liftLow();
@@ -73,7 +68,7 @@ public class LeoOpRed extends MatchOpMode {
 
         liftUpButton = (new GamepadTrigger(operatorGamepad, GamepadKeys.Trigger.RIGHT_TRIGGER).whenPressed(lift::moveUp));
         liftDownButton = (new GamepadTrigger(operatorGamepad, GamepadKeys.Trigger.LEFT_TRIGGER).whenPressed(lift::moveDown));
-        liftRestButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.LEFT_BUMPER).whenPressed(new LowerLiftNoLimitSwitchCommand(lift, cap)));
+        liftRestButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.LEFT_BUMPER).whenPressed(new LowerLiftNoLimitSwitchCommand(lift)));
         liftHighButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.RIGHT_BUMPER).whenPressed(lift::liftHigh));
         manualDownButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.BACK).whileHeld(lift::lowerLiftManual).whenReleased(lift::resetLift));
         manualUpButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.START).whileHeld(lift::raiseLiftPID).whenReleased(lift::stopLift));
@@ -98,7 +93,7 @@ public class LeoOpRed extends MatchOpMode {
         );
         closeButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.A).whenPressed(lift::closeDel));
 
-        capToggleButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.Y).whenPressed(cap::toggleCap));
+        //capToggleButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.Y).whenPressed(cap::toggleCap));
         //scoreCapButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.DPAD_RIGHT).whenPressed(cap::scoreCap));
         spinButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.DPAD_UP)).whileHeld(
                 new InstantCommand(duckWheels::spinDuckRed, duckWheels))

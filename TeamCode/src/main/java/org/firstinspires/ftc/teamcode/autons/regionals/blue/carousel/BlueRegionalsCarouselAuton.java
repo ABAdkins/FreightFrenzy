@@ -8,13 +8,11 @@ import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.hardware.ServoEx;
 import com.arcrobotics.ftclib.hardware.motors.MotorEx;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.Util;
 import org.firstinspires.ftc.teamcode.drive.MatchOpMode;
 import org.firstinspires.ftc.teamcode.drive.SampleTankDrive;
 import org.firstinspires.ftc.teamcode.pipelines.TeamMarkerPipeline;
-import org.firstinspires.ftc.teamcode.subsystems.Cap;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.DuckWheels;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
@@ -47,7 +45,6 @@ public class BlueRegionalsCarouselAuton extends MatchOpMode {
     private Lift lift;
     private Vision vision;
     private DuckWheels duckWheels;
-    private Cap cap;
 
     @Override
     public void robotInit() {
@@ -60,7 +57,6 @@ public class BlueRegionalsCarouselAuton extends MatchOpMode {
         intake = new Intake(hardwareMap, telemetry);
         lift = new Lift(hardwareMap, telemetry);
         duckWheels = new DuckWheels(hardwareMap, telemetry);
-        cap = new Cap(hardwareMap, telemetry);
     }
 
     @Override
@@ -75,13 +71,13 @@ public class BlueRegionalsCarouselAuton extends MatchOpMode {
 
                 new SelectCommand(new HashMap<Object, Command>() {{
                     put(TeamMarkerPipeline.Position.LEFT, new SequentialCommandGroup(
-                            new BlueRegionalsCarouselLCommand(drivetrain, lift, duckWheels, cap, telemetry)
+                            new BlueRegionalsCarouselLCommand(drivetrain, lift, duckWheels, telemetry)
                     ));
                     put(TeamMarkerPipeline.Position.MIDDLE, new SequentialCommandGroup(
-                            new BlueRegionalsCarouselCCommand(drivetrain, lift, duckWheels, cap, telemetry)
+                            new BlueRegionalsCarouselCCommand(drivetrain, lift, duckWheels, telemetry)
                     ));
                     put(TeamMarkerPipeline.Position.RIGHT, new SequentialCommandGroup(
-                            new BlueRegionalsCarouselRCommand(drivetrain, lift, duckWheels, cap, telemetry)
+                            new BlueRegionalsCarouselRCommand(drivetrain, lift, duckWheels, telemetry)
                     ));
                 }}, vision::getCurrentPosition)
 

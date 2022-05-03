@@ -20,7 +20,7 @@ public class BlueRegionalsWarehouseCCommand extends SequentialCommandGroup {
         addCommands(
                 new InstantCommand(lift::closeDel),
                 //preload
-                new SplineCommand(drivetrain, new Vector2d( 26.5, -20.5),220, true),
+                new SplineCommand(drivetrain, new Vector2d( 28, -20.5),220, true),
                 new WaitCommand(50),
                 new TurnToCommand(drivetrain, 180, false),
                 new DriveForwardCommand(drivetrain, -4),
@@ -41,7 +41,7 @@ public class BlueRegionalsWarehouseCCommand extends SequentialCommandGroup {
                 new WaitCommand(100),
                 new InstantCommand(intake::stop),
                 //deliver 1
-                new TwoSplineCommand(drivetrain, new Vector2d(-4,15), new Vector2d(17,-26), 180,220, true),
+                new TwoSplineCommand(drivetrain, new Vector2d(-4,15), new Vector2d(18,-26), 180,220, true),
                 new TurnToCommand(drivetrain, 190, false),
                 new DriveForwardCommand(drivetrain, -7),
                 new InstantCommand(lift::liftHigh),
@@ -56,8 +56,14 @@ public class BlueRegionalsWarehouseCCommand extends SequentialCommandGroup {
                 new TwoSplineCommand(drivetrain, new Vector2d(-3,10), new Vector2d(-3, 43.0), 265.8, 264.5),
 
 
+
+
+
+                new TurnToCommand(drivetrain, 81, false),
+
                 //take this out when fixed
                 new WaitCommand(1200),
+                new TurnToCommand(drivetrain, 90, false),
 
                 new InstantCommand(intake::outtake),
                 new WaitCommand(2000),

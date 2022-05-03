@@ -20,16 +20,16 @@ public class RedRegionalsWarehouseLCommand extends SequentialCommandGroup {
 
 
         addCommands(
-
                 new InstantCommand(lift::closeDel),
                 //go to hub
-                new SplineCommand(drivetrain, new Vector2d( 25, 20.75),-220, true),
+                new SplineCommand(drivetrain, new Vector2d( 23, 20.75),-220, true),
                 new WaitCommand(50),
                 new TurnToCommand(drivetrain, 180, false),
                 new DriveForwardCommand(drivetrain, -6.5),
                 new InstantCommand(lift::liftLowAuton),
-                new InstantCommand(lift::openDel),
                 new WaitCommand(400),
+                new InstantCommand(lift::openDel),
+                new WaitCommand(350),
                 new InstantCommand(lift::closeDel),
                 new WaitCommand(100),
                 new InstantCommand(lift::liftLow),

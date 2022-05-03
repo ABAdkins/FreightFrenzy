@@ -35,7 +35,7 @@ public class CarouselRedRegionalsCommandSequence extends SequentialCommandGroup 
                 ),
                 new InstantCommand(duckWheels::stop),
                 new DriveForwardCommand(drivetrain, -5),
-                new IMUTurnCommand(drivetrain, -0)
+                new IMUTurnCommand(drivetrain, -30)
         );
     }
 }

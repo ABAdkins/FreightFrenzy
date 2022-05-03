@@ -7,6 +7,7 @@ import com.arcrobotics.ftclib.command.WaitCommand;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.autons.regionals.red.warehouse.sequences.RedRegionals2CycleCommandSequence;
+import org.firstinspires.ftc.teamcode.autons.regionals.red.warehouse.sequences.RedRegionals3CycleCommandSequence;
 import org.firstinspires.ftc.teamcode.commands.drive.auton.DriveForwardCommand;
 import org.firstinspires.ftc.teamcode.commands.drive.auton.SplineCommand;
 import org.firstinspires.ftc.teamcode.commands.drive.auton.TurnToCommand;
@@ -16,21 +17,23 @@ import org.firstinspires.ftc.teamcode.subsystems.Lift;
 
 public class RedRegionalsWarehouseCCommand extends SequentialCommandGroup {
     public RedRegionalsWarehouseCCommand(Drivetrain drivetrain, Lift lift, Intake intake, Telemetry telemetry) {
-        addCommands(
 
+
+        addCommands(
                 new InstantCommand(lift::closeDel),
                 //go to hub
-                new SplineCommand(drivetrain, new Vector2d( 22.5, 19.5),-220, true),
+                new SplineCommand(drivetrain, new Vector2d( 23, 20.75),-220, true),
                 new WaitCommand(50),
-                new DriveForwardCommand(drivetrain, -4),
-                new InstantCommand(lift::liftMidAuton),
                 new TurnToCommand(drivetrain, 180, false),
+                new DriveForwardCommand(drivetrain, -6.5),
+                new InstantCommand(lift::liftMidAuton),
+                new WaitCommand(400),
                 new InstantCommand(lift::openDel),
-                new WaitCommand(300),
+                new WaitCommand(350),
                 new InstantCommand(lift::closeDel),
+                new WaitCommand(100),
                 new InstantCommand(lift::liftLow),
                 new RedRegionals2CycleCommandSequence(drivetrain, lift, intake, telemetry)
-
         );
     }
 }

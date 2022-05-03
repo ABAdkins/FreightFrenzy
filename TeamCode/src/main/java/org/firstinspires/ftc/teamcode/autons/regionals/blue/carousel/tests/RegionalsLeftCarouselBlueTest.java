@@ -4,13 +4,10 @@ import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.hardware.motors.MotorEx;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-import org.firstinspires.ftc.teamcode.autons.champs.blue.carousel.CarouselBlueCommandL;
 import org.firstinspires.ftc.teamcode.autons.regionals.blue.carousel.BlueRegionalsCarouselLCommand;
 import org.firstinspires.ftc.teamcode.drive.MatchOpMode;
 import org.firstinspires.ftc.teamcode.drive.SampleTankDrive;
-import org.firstinspires.ftc.teamcode.subsystems.Cap;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.DuckWheels;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
@@ -35,7 +32,6 @@ public class RegionalsLeftCarouselBlueTest extends MatchOpMode {
     private Intake intake;
     private Lift lift;
     private DuckWheels duckWheels;
-    private Cap cap;
 
 
     @Override
@@ -47,7 +43,6 @@ public class RegionalsLeftCarouselBlueTest extends MatchOpMode {
         intake = new Intake(hardwareMap, telemetry);
         lift = new Lift(hardwareMap,telemetry);
         duckWheels = new DuckWheels(hardwareMap,telemetry);
-        cap = new Cap(hardwareMap,telemetry);
 
         //drivetrain.setPoseEstimate(Trajectories.BlueLeftTape.startPose);
         drivetrain.setPoseEstimate(new Pose2d(startPoseX, startPoseY, Math.toRadians(startPoseHeading)));
@@ -60,7 +55,6 @@ public class RegionalsLeftCarouselBlueTest extends MatchOpMode {
 
     @Override
     public void matchStart() {
-        schedule(new BlueRegionalsCarouselLCommand(drivetrain, lift, duckWheels, cap, telemetry));
-
+        schedule(new BlueRegionalsCarouselLCommand(drivetrain, lift, duckWheels, telemetry));
     }
 }

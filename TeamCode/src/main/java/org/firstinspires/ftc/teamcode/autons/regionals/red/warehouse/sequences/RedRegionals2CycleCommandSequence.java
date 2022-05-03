@@ -19,9 +19,11 @@ public class RedRegionals2CycleCommandSequence extends SequentialCommandGroup {
                 //begin sequence
 
                 new InstantCommand(intake::intake),
-                new TwoSplineCommand(drivetrain, new Vector2d(-3.5, -10), new Vector2d(-4, -40.0), -265.8, -265.5),
+                //in 1
+                new TwoSplineCommand(drivetrain, new Vector2d(-3, -10), new Vector2d(-4, -40.0), -265.8, -265.5),
                 new WaitCommand(50),
                 new InstantCommand(intake::outtake),
+                //out 1 del
                 new TwoSplineCommand(drivetrain, new Vector2d(-4,10), new Vector2d(22,21), -150, -220, true),
                 new InstantCommand(intake::stop),
                 new InstantCommand(lift::liftHigh),
@@ -31,11 +33,12 @@ public class RedRegionals2CycleCommandSequence extends SequentialCommandGroup {
                 new InstantCommand(lift::closeDel),
                 new InstantCommand(lift::liftLow),
                 new InstantCommand(intake::intake),
-
+                //in 2
                 new TwoSplineCommand(drivetrain, new Vector2d(-7, -6), new Vector2d(-5, -40.0), -265.8, -265.8),
                 new WaitCommand(50),
                 new InstantCommand(intake::outtake),
-                new TwoSplineCommand(drivetrain, new Vector2d(-5,-10), new Vector2d(22,21), -150, -220, true),
+                //out 2 del
+                new TwoSplineCommand(drivetrain, new Vector2d(-5.5,-10), new Vector2d(22,21), -150, -220, true),
                 new InstantCommand(lift::liftHigh),
                 new TurnToCommand(drivetrain, 180, false),
                 new InstantCommand(lift::openDel),
@@ -43,6 +46,7 @@ public class RedRegionals2CycleCommandSequence extends SequentialCommandGroup {
                 new InstantCommand(lift::closeDel),
                 new InstantCommand(lift::liftLow),
                 new InstantCommand(intake::intake),
+                //in park
                 new TwoSplineCommand(drivetrain, new Vector2d(-8, -7), new Vector2d(-5, -40.0), -265.8, -264.5),
                 new WaitCommand(300),
                 new InstantCommand(intake::stop)

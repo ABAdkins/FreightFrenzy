@@ -6,12 +6,15 @@ import com.arcrobotics.ftclib.command.SequentialCommandGroup;
 
 import org.firstinspires.ftc.teamcode.subsystems.Lift;
 
-public class LowerLiftNoLimitSwitchCommand extends SequentialCommandGroup {
+public class TestLowerLiftNoLimitSwitchCommand extends SequentialCommandGroup {
     private Lift lift;
 
-    public LowerLiftNoLimitSwitchCommand(Lift lift) {
+    public TestLowerLiftNoLimitSwitchCommand(Lift lift) {
         addCommands(
-            new InstantCommand(lift::closeDel, lift),
+                new ParallelCommandGroup(
+                    //new InstantCommand(cap::rest),
+                    new InstantCommand(lift::closeDel, lift)
+                ),
             new InstantCommand(lift::liftLow, lift)
         );
     }

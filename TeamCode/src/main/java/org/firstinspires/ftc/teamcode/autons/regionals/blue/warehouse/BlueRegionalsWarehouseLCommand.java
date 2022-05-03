@@ -56,12 +56,16 @@ public class BlueRegionalsWarehouseLCommand extends SequentialCommandGroup {
                 new TwoSplineCommand(drivetrain, new Vector2d(-3,10), new Vector2d(-3, 43.0), 265.8, 264.5),
 
 
+                new TurnToCommand(drivetrain, 81, false),
+
                 //take this out when fixed
                 new WaitCommand(1200),
+                new TurnToCommand(drivetrain, 90, false),
 
                 new InstantCommand(intake::outtake),
                 new WaitCommand(2000),
                 new InstantCommand(intake::stop)
+
 
 
                 /*

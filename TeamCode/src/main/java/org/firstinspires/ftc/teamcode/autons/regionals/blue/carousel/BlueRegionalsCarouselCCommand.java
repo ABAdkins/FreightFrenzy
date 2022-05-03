@@ -7,18 +7,16 @@ import com.arcrobotics.ftclib.command.SequentialCommandGroup;
 import com.arcrobotics.ftclib.command.WaitCommand;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.commands.LowerLiftCommand;
 import org.firstinspires.ftc.teamcode.commands.LowerLiftNoLimitSwitchCommand;
 import org.firstinspires.ftc.teamcode.commands.drive.auton.SlowDriveForwardCommand;
 import org.firstinspires.ftc.teamcode.commands.drive.auton.SplineCommand;
 import org.firstinspires.ftc.teamcode.commands.drive.auton.TurnToCommand;
-import org.firstinspires.ftc.teamcode.subsystems.Cap;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.DuckWheels;
 import org.firstinspires.ftc.teamcode.subsystems.Lift;
 
 public class BlueRegionalsCarouselCCommand extends SequentialCommandGroup {
-    public BlueRegionalsCarouselCCommand(Drivetrain drivetrain, Lift lift, DuckWheels duckWheels, Cap cap, Telemetry telemetry) {
+    public BlueRegionalsCarouselCCommand(Drivetrain drivetrain, Lift lift, DuckWheels duckWheels, Telemetry telemetry) {
         addCommands(
                 //blue mid carousel
                 //command sequence
@@ -42,7 +40,8 @@ public class BlueRegionalsCarouselCCommand extends SequentialCommandGroup {
                 new InstantCommand(lift::openDel),
                 new WaitCommand(700),
                 new SlowDriveForwardCommand(drivetrain, 8),
-                new LowerLiftNoLimitSwitchCommand(lift, cap),
+                new LowerLiftNoLimitSwitchCommand(lift),
+                new LowerLiftNoLimitSwitchCommand(lift),
                 new InstantCommand(lift::closeDel),
 
                 //park

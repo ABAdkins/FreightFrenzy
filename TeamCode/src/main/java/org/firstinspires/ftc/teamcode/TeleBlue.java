@@ -7,20 +7,16 @@ import com.arcrobotics.ftclib.command.button.GamepadButton;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.commands.DeliverCommand;
 import org.firstinspires.ftc.teamcode.commands.LowerLiftCommand;
-import org.firstinspires.ftc.teamcode.commands.LowerLiftNoLimitSwitchCommand;
-import org.firstinspires.ftc.teamcode.commands.drive.CapManualCommand;
+import org.firstinspires.ftc.teamcode.commands.TestLowerLiftNoLimitSwitchCommand;
 import org.firstinspires.ftc.teamcode.commands.drive.teleOp.DefaultDriveCommand;
 import org.firstinspires.ftc.teamcode.commands.drive.teleOp.ReallySlowDriveCommand;
 import org.firstinspires.ftc.teamcode.commands.drive.teleOp.SlowDriveCommand;
 import org.firstinspires.ftc.teamcode.drive.MatchOpMode;
 import org.firstinspires.ftc.teamcode.drive.SampleTankDrive;
-import org.firstinspires.ftc.teamcode.subsystems.Cap;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.DuckWheels;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
@@ -37,7 +33,7 @@ public class TeleBlue extends MatchOpMode {
     private Lift lift;
     private Intake intake;
     private DuckWheels duckWheels;
-    private Cap cap;
+    //private Cap cap;
 
     //Buttons
     private Button intakeButton, outtakeButton;
@@ -58,7 +54,7 @@ public class TeleBlue extends MatchOpMode {
         intake = new Intake(hardwareMap, telemetry);
         lift = new Lift(hardwareMap, telemetry);
         duckWheels = new DuckWheels(hardwareMap, telemetry);
-        cap = new Cap(hardwareMap, telemetry);
+        //cap = new Cap(hardwareMap, telemetry);
 
         drivetrain.init();
 
@@ -66,7 +62,7 @@ public class TeleBlue extends MatchOpMode {
         operatorGamepad = new GamepadEx(gamepad2);
 
         drivetrain.setDefaultCommand(new DefaultDriveCommand(drivetrain, driverGamepad));
-        cap.setDefaultCommand(new CapManualCommand(cap, operatorGamepad));
+        //cap.setDefaultCommand(new CapManualCommand(cap, operatorGamepad));
 
         lift.closeDel();
         lift.liftLow();
@@ -85,7 +81,7 @@ public class TeleBlue extends MatchOpMode {
         //lift
         liftUpButton = (new GamepadTrigger(operatorGamepad, GamepadKeys.Trigger.RIGHT_TRIGGER).whenPressed(lift::moveUp));
         liftDownButton = (new GamepadTrigger(operatorGamepad, GamepadKeys.Trigger.LEFT_TRIGGER).whenPressed(lift::moveDown));
-        liftRestButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.LEFT_BUMPER).whenPressed(new LowerLiftNoLimitSwitchCommand(lift, cap)));
+        liftRestButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.LEFT_BUMPER).whenPressed(new TestLowerLiftNoLimitSwitchCommand(lift)));
         liftHighButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.RIGHT_BUMPER).whenPressed(lift::liftHigh));
         manualDownButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.BACK).whileHeld(lift::lowerLiftManual).whenReleased(lift::resetLift));
         manualUpButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.START).whileHeld(lift::raiseLiftPID).whenReleased(lift::stopLift));
@@ -115,7 +111,7 @@ public class TeleBlue extends MatchOpMode {
         );
 
         //cap
-        capToggleButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.Y).whenPressed(cap::toggleCap));
+        //capToggleButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.Y).whenPressed(cap::toggleCap));
         //scoreCapButton = (new GamepadButton(operatorGamepad, GamepadKeys.Button.DPAD_RIGHT).whenPressed(cap::scoreCap));
     }
 

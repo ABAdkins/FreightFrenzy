@@ -13,7 +13,6 @@ import org.firstinspires.ftc.teamcode.commands.drive.auton.KindaSlowDriveForward
 import org.firstinspires.ftc.teamcode.commands.drive.auton.SlowDriveForwardCommand;
 import org.firstinspires.ftc.teamcode.commands.drive.auton.SlowestDriveForwardCommand;
 import org.firstinspires.ftc.teamcode.commands.drive.auton.TurnToCommand;
-import org.firstinspires.ftc.teamcode.subsystems.Cap;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.DuckWheels;
 import org.firstinspires.ftc.teamcode.subsystems.Lift;
